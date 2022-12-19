@@ -43,7 +43,6 @@ void print_python_bytes(PyObject *p)
         printf("Error: Invalid Bytes Object\n");
         return;
     }
-    
     size = PyBytes_Size(p);
     str = PyBytes_AsString(p);
     
@@ -70,7 +69,6 @@ void print_python_float(PyObject *p)
         printf("Error: Invalid Float Object\n");
         return;
     }
-    
     value = PyFloat_AsDouble(p);
     printf("[.] float object info\n");
     printf("  value: %g\n", value);
