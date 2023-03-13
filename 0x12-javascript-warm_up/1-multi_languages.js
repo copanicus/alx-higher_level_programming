@@ -1,4 +1,8 @@
 #!/usr/bin/node
-// It prints 3 lines
+// A script that prints 3 lines about C, Python and JS
 
-console.log('C is fun\nPython is cool\nJavascript is amazing');
+const myVar1 = 'C is fun';
+const myVar2 = 'Python is cool';
+const myVar3 = 'Javascript is amazing';
+
+console.log(myVar1 + '\n' + myVar2 + '\n' + myVar3);
