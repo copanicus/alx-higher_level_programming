@@ -1,23 +1,25 @@
 #!/usr/bin/python3
-"""task 6 modele"""
+"""Finds the peak in an unsorted list of integers"""
 
 
 def find_peak(list_of_integers):
-    """Return a peak in a list of unsorted integers."""
-    if list_of_integers == []:
+    """Finds the peak in an unsorted list of ints"""
+    if len(list_of_integers) > 1:
+        if list_of_integers[0] >= list_of_integers[1]:
+            return list_of_integers[0]
+        if list_of_integers[-1] >= list_of_integers[-2]:
+            return list_of_integers[-1]
+        return _find_peak(list_of_integers, 0, len(list_of_integers))
+    if not list_of_integers:
         return None
+    return list_of_integers[0]
 
-    size = len(list_of_integers)
-    if size == 1:
-        return list_of_integers[0]
-    elif size == 2:
-        return max(list_of_integers)
 
-    mid = int(size / 2)
-    peak = list_of_integers[mid]
-    if peak > list_of_integers[mid - 1] and peak > list_of_integers[mid + 1]:
-        return peak
-    elif peak < list_of_integers[mid - 1]:
-        return find_peak(list_of_integers[:mid])
-    else:
-        return find_peak(list_of_integers[mid + 1:])
+def _find_peak(lint, start, stop):
+    """Recursively finds peak"""
+    if stop - start < 2:
+        return None
+    mid = (start + stop) // 2
+    if lint[mid] >= lint[mid - 1] and lint[mid] >= lint[mid + 1]:
+        return lint[mid]
+    return _find_peak(lint, start, mid) or _find_peak(lint, mid, stop)
